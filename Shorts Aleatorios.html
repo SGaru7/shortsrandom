@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Shorts Aleatorios con Sonido</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; overflow: hidden;
+      background: black; height: 100%; width: 100%;
+    }
+    iframe {
+      width: 100%; height: 100%; border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="shortFrame" src="" allowfullscreen></iframe>
+
+  <script>
+    const shorts = [
+      { duracion: 34, url: "https://www.youtube.com/shorts/Sxeu4M93OXo" },
+      { duracion: 47, url: "https://www.youtube.com/shorts/YK1mMB0zAEM" },
+      { duracion: 45, url: "https://www.youtube.com/shorts/c7gQJ6QIbBc" },
+      { duracion: 41, url: "https://www.youtube.com/shorts/UXHfGbnhvsM" },
+      { duracion: 50, url: "https://www.youtube.com/shorts/9e-38CE2HoY" },
+      { duracion: 40, url: "https://www.youtube.com/shorts/XmQVXOSVs-s" },
+      { duracion: 35, url: "https://www.youtube.com/shorts/txOimZ87rEg" },
+      { duracion: 31, url: "https://www.youtube.com/shorts/w2dIwJdbmrc" },
+      { duracion: 31, url: "https://www.youtube.com/shorts/3LylA3TISq8" },
+      { duracion: 40, url: "https://www.youtube.com/shorts/AH2DBsv2tAo" },
+      { duracion: 27, url: "https://www.youtube.com/shorts/kiyHUobiDOM" },
+      { duracion: 55, url: "https://www.youtube.com/shorts/0hdqUHq_LME" },
+      { duracion: 54, url: "https://www.youtube.com/shorts/fikHbM2tlM4" },
+      { duracion: 40, url: "https://www.youtube.com/shorts/RSQseqixANc" },
+      { duracion: 55, url: "https://www.youtube.com/shorts/4kBN5UHooS0" },
+      { duracion: 58, url: "https://www.youtube.com/shorts/NOLRah-Tw3g" },
+      { duracion: 50, url: "https://www.youtube.com/shorts/G1m4OjzZf1s" },
+      { duracion: 52, url: "https://www.youtube.com/shorts/-VUZJyhahfM" },
+      { duracion: 52, url: "https://www.youtube.com/shorts/8y8V5DEOCTY" }
+    ];
+
+    function cargarRandomShort() {
+      const randomIndex = Math.floor(Math.random() * shorts.length);
+      const short = shorts[randomIndex];
+      const videoId = short.url.split("/shorts/")[1];
+      const iframe = document.getElementById("shortFrame");
+
+      iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&playsinline=1";
+
+      setTimeout(() => {
+        cargarRandomShort();
+      }, short.duracion * 1000);
+    }
+
+    cargarRandomShort();
+  </script>
+</body>
+</html>
